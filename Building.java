@@ -6,6 +6,7 @@ public class Building {
     protected String address;
     protected int nFloors;
     protected int activeFloor = -1; // Default value indicating we are not inside this building
+    protected boolean hasElevator; // Whether or not the building has an elevator
 
     /* Default constructor */
     public Building() {
@@ -29,6 +30,7 @@ public class Building {
         if (address != null) { this.address = address; } 
         if (nFloors < 1) {
             throw new RuntimeException("Cannot construct a building with fewer than 1 floor.");
+        
         }
         this.nFloors = nFloors;
     }
@@ -69,6 +71,7 @@ public class Building {
     }
 
     public void goToFloor(int floorNum) {
+        
         if (this.activeFloor == -1) {
             throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
         }
@@ -77,6 +80,7 @@ public class Building {
         }
         System.out.println("You are now on floor #" + floorNum + " of " + this.name);
         this.activeFloor = floorNum;
+    //    super.goToFloor(floorNum);
     }
 
     public void goUp() {
@@ -89,6 +93,7 @@ public class Building {
 
     public void showOptions() {
         System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
+    //    super.showOptions();
     }
 
     public String toString() {
